@@ -98,16 +98,16 @@ for z in tqdm(range(nz), desc = "Traitement des données"):
 
     # Extraction masque coupe z
     mask = mask_data[:, :, z] 
-    mask_corriger = mm.correction_nan_bool(mask) # Avant = 11 secondes --> mtn = 0.004 / 30 coupes
+    mask_corriger = mm.correction_nan_bool(mask) 
     
     # Création d'une nouvelle image avec seulement le cerveau sans la boite craniène (en theorie)
     cerveau = irm * mask_corriger # Cerveau isolé
     cerveau = mm.expansion_histogramme(cerveau)
 
     # Segmentation de la lésion
-    lesion_brute = mm.seuillage_fourchette(cerveau, 1, 30) # Avant = 3 secondes --> mtn = 0.002 / 30 coupes
-    lesion = mm.ouverture(lesion_brute) # long.. 6 secondes
-    sum_pixel_lesion += np.sum(lesion) # Avant = 2 secondes --> mtn = 0.002 / 30 coupes
+    lesion_brute = mm.seuillage_fourchette(cerveau, 1, 30) 
+    lesion = mm.ouverture(lesion_brute) 
+    sum_pixel_lesion += np.sum(lesion) 
 
     # Cortex / Lesion
     cortex = cortex_data[:, :, z] 
