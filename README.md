@@ -19,8 +19,8 @@ Installez les dépendances nécessaires :
 Pour utiliser ce projet, exécutez les scripts Python dans l'ordre suivant :
 
 1. `mon_module.py` : Ce script contient des fonctions utilitaires pour le traitement d'image.
-2. `process_image_irm.py` : Utilisez ce script pour le traitement des images IRM et imprimer le 
-3. `exploration_irm_lesion.py` : Ce script sert à l'analyse détaillée des lésions et à l'affichage graphique.
+2. `process_image_irm.py` : Utilisez ce script pour le traitement des images IRM en 3 dimentions.
+3. `exploration_irm_lesion.py` : Ce script sert à l'analyse détaillée des image en 2 dimentions et à l'affichage graphique (exploration des données).
 
 ## Fonctionnalités
 
