@@ -106,7 +106,7 @@ for z in tqdm(range(nz), desc = "Traitement des données"):
 
     # Segmentation de la lésion
     lesion_brute = mm.seuillage_fourchette(cerveau, 1, 30) # Avant = 3 secondes --> mtn = 0.002 / 30 coupes
-    lesion = mm.ouverture(lesion_brute) # long.. 6
+    lesion = mm.ouverture(lesion_brute) # long.. 6 secondes
     sum_pixel_lesion += np.sum(lesion) # Avant = 2 secondes --> mtn = 0.002 / 30 coupes
 
     # Cortex / Lesion
@@ -130,7 +130,7 @@ for z in tqdm(range(nz), desc = "Traitement des données"):
 
     # Cortex insulaire / Lesion
     cortex_insulaire = cortex_insulaire_data[:, :, z]
-    cortex_insulaire_lesion = lesion * cortex_insulaire # couleur chelou mais bonne valeur
+    cortex_insulaire_lesion = lesion * cortex_insulaire
     sum_surface_lesion_insulaire += np.sum(cortex_insulaire_lesion[cortex_insulaire_lesion > seuil_proba]) 
     sum_surface_cortex_insulaire += np.sum(cortex_insulaire[cortex_insulaire > seuil_proba])
     # Cortex préfrontal / Lesion
