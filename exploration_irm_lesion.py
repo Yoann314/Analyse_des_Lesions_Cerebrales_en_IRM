@@ -78,7 +78,7 @@ lesion = mm.ouverture(lesion_brute)
 #mm.affiche_binaire(lesion)
 
 sum_pixel_lesion = np.sum(lesion)
-print("Le nombre de pixel dans la lésion est de :", sum_pixel_lesion, "\n") # 289
+print("Le nombre de pixel dans la lésion est de :", sum_pixel_lesion, "\n")
 mm.affiche_2_image(lesion_brute, lesion, "Seuillage fourchette", "Lésion")
 mm.affiche_2_image(mm.image_couleur(irm, "bleu") + mm.image_couleur(mask, "rouge"), cerveau, "IRM (bleu) et le masque (rouge)", "Cerveau isolé")
 
@@ -131,13 +131,13 @@ Détermination de la proportion de la lésion dans chacune des 7 aires corticale
 
 print("\nDétermination de la proportion de la lésion dans chacune des 7 aires corticales \n\n")
 
-# Cortex insulaire / Lesion -- vérifier si on  doit etandre l'histogramme
+# Cortex insulaire / Lesion
 print("## La lésion dans le cortex insulaire ##")
 cortex_insulaire_load = nb.load(chemins_des_fichiers[8])
 cortex_insulaire_data = cortex_insulaire_load.get_fdata()
 cortex_insulaire = cortex_insulaire_data[:, :, Z]
 cortex_insulaire = np.rot90(cortex_insulaire, k=3)
-cortex_insulaire_lesion = lesion * cortex_insulaire # couleur chelou mais bonne valeur
+cortex_insulaire_lesion = lesion * cortex_insulaire
 
 # Donne une mesure de l'étendue totale de la lésion dans chaque région, en tenant compte de l'incertitude ou de la confiance que chaque voxel appartienne à cette région.
 surface_lesion_insulaire = np.sum(cortex_insulaire_lesion[cortex_insulaire_lesion > 0.0011]) # mm.somme_pixel_blanc(cortex_insulaire_lesion)
